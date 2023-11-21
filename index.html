@@ -84,7 +84,17 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
       let reticle = new Gltf2Node({ url: "assets/reticle.gltf" });
       reticle.visible = false;
-      vec3.set(reticle.scale, 1.5, 1.5, 1.5); // make reticle bigger
+
+      // Set the initial scale of the reticle
+      let reticleScale = 2.5;
+      vec3.set(reticle.scale, reticleScale, reticleScale, reticleScale);
+
+      // Adjust the scale of individual nodes within the reticle model
+      if (reticle.children && reticle.children.length > 0) {
+        for (let child of reticle.children) {
+          vec3.set(child.scale, reticleScale, reticleScale, reticleScale);
+        }
+      }
       scene.addNode(reticle);
 
       // Having a really simple drop shadow underneath an object helps ground
