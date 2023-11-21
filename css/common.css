@@ -45,6 +45,10 @@ canvas {
   touch-action: none;
 }
 
+#content {
+  display: none;
+}
+
 .back {
   float: right;
   text-decoration: none;
